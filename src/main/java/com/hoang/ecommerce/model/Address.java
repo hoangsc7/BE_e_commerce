@@ -28,17 +28,18 @@ public class Address {
     private String zipCode;
 
     @ManyToOne
-    @JoinColumn( name = "user_id")
+    @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
 
     private String mobile;
 
-    public Address(){
+    public Address() {
 
     }
 
-    public Address(Long id, String firstName, String lastName, String streetAddress, String city, String state, String zipCode, User user, String mobile) {
+    public Address(Long id, String firstName, String lastName, String streetAddress, String city, String state,
+            String zipCode, User user, String mobile) {
         super();
         this.id = id;
         this.firstName = firstName;
@@ -122,4 +123,19 @@ public class Address {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
+
+    // @Override
+    // public String toString() {
+    //     return "Address{" +
+    //             "id=" + id +
+    //             ", firstName='" + firstName + '\'' +
+    //             ", lastName='" + lastName + '\'' +
+    //             ", streetAddress='" + streetAddress + '\'' +
+    //             ", city='" + city + '\'' +
+    //             ", state='" + state + '\'' +
+    //             ", zipCode='" + zipCode + '\'' +
+    //             ", user=" + user +
+    //             ", mobile='" + mobile + '\'' +
+    //             '}';
+    // }
 }

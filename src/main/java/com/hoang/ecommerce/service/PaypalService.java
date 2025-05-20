@@ -1,4 +1,4 @@
-package com.hoang.ecommerce.config.paypal;
+package com.hoang.ecommerce.service;
 
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;

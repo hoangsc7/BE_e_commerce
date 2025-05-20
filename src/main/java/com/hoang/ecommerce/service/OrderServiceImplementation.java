@@ -39,10 +39,21 @@ public class OrderServiceImplementation implements OrderService {
 
     @Override
     public Order createOrder(User user, Address shippingAddress) {
-        shippingAddress.setUser(user);
-        Address address = addressRepository.save(shippingAddress);
-        user.getAddress().add(address);
-        userRepository.save(user);
+        // shippingAddress.setUser(user);
+        // Address address = addressRepository.save(shippingAddress);
+        // user.getAddress().add(address);
+        // userRepository.save(user);
+        System.out.println("----------------------------Shipping address: " + shippingAddress);
+        if (shippingAddress.getId() == null) {
+            shippingAddress.setUser(user);
+            Address address = addressRepository.save(shippingAddress);
+            user.getAddress().add(address);
+            userRepository.save(user);
+            shippingAddress = address; 
+        } else {
+            shippingAddress = addressRepository.findById(shippingAddress.getId()).orElseThrow(() -> new RuntimeException("Address not found"));
+            System.out.println("+++++++++Shipping address found: " + shippingAddress);
+        }
 
         Cart cart = cartService.findUserCart(user.getId());
         List<OrderItem> orderItems = new ArrayList<>();
